@@ -2,7 +2,7 @@
 
 namespace BookSwap.Domain.Users;
 
-public class User : Entity
+public class User : IEntity<Guid>, ICreatedAudited<Guid>
 {
     public string UserName { get; set; }
     public string FirstName { get; set; }
@@ -12,4 +12,7 @@ public class User : Entity
     public string NationalId { get; set; }
     public string Adress { get; set; }
     public int RightToSwap { get; set; }
+    public DateTime CreateTime { get; set; }
+    public Guid CreatorUser { get; set ; }
+    public Guid Id { get; set ; }
 }

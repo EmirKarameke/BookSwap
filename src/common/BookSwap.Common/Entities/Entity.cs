@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookSwap.Common.Entities;
 
-public class Entity
+public class Entity 
 {
     public Guid Id { get; set; }
     public DateTime CreatedDate { get; set; }
