@@ -1,5 +1,7 @@
-﻿namespace BookSwap.Domain.UserInventories;
+﻿using BookSwap.Common.Repositories;
 
-public interface IUserInventoryRepository
+namespace BookSwap.Domain.UserInventories;
+
+public interface IUserInventoryRepository : IRepositoryBase<UserInventory,Guid>
 {
 }

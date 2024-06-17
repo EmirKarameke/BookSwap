@@ -1,5 +1,7 @@
-﻿namespace BookSwap.Domain.Reservations;
+﻿using BookSwap.Common.Repositories;
 
-public interface IReservationRepository
+namespace BookSwap.Domain.Reservations;
+
+public interface IReservationRepository : IRepositoryBase<Reservation,Guid>
 {
 }

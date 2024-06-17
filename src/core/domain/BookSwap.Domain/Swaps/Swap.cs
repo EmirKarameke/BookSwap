@@ -4,8 +4,9 @@ using BookSwap.Domain.Users;
 
 namespace BookSwap.Domain.Swaps;
 
-public class Swap : Entity
+public class Swap : IEntity<Guid>
 {
+    public Guid Id { get; set; }
     public Guid User1Id { get; set; }
     public Guid User2Id { get; set; }
     public Guid Book1Id { get; set; }

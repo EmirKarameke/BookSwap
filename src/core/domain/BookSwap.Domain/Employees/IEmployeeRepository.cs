@@ -1,5 +1,7 @@
-﻿namespace BookSwap.Domain.Employees;
+﻿using BookSwap.Common.Repositories;
 
-public interface IEmployeeRepository
+namespace BookSwap.Domain.Employees;
+
+public interface IEmployeeRepository : IRepositoryBase<Employee,Guid>
 {
 }

@@ -4,8 +4,9 @@ using BookSwap.Domain.Users;
 
 namespace BookSwap.Domain.Reservations;
 
-public class Reservation : Entity
+public class Reservation : IEntity<Guid>
 {
+    public Guid Id { get; set; }
     public Guid UserId { get; set; }
     public Guid BookId { get; set; }
     public DateTime ReservDate { get; set; }

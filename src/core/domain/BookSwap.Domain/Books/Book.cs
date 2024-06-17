@@ -2,8 +2,9 @@
 
 namespace BookSwap.Domain.Books;
 
-public class Book : Entity
+public class Book : IEntity<Guid>
 {
+    public Guid Id { get; set; }
     public string ISBNNo { get; set; }
     public string BookName { get; set; }
     public string Summary { get; set; }

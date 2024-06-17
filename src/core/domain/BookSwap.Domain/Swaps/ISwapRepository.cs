@@ -1,5 +1,7 @@
-﻿namespace BookSwap.Domain.Swaps;
+﻿using BookSwap.Common.Repositories;
 
-public interface ISwapRepository
+namespace BookSwap.Domain.Swaps;
+
+public interface ISwapRepository : IRepositoryBase<Swap,Guid>
 {
 }

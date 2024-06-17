@@ -1,5 +1,7 @@
-﻿namespace BookSwap.Domain.Orders;
+﻿using BookSwap.Common.Repositories;
 
-public interface IOrderRepository
+namespace BookSwap.Domain.Orders;
+
+public interface IOrderRepository : IRepositoryBase<Order,Guid>
 {
 }
