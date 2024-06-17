@@ -11,6 +11,6 @@ public class Reservation : IEntity<Guid>
     public Guid BookId { get; set; }
     public DateTime ReservDate { get; set; }
     public DateTime ReservEndDate { get; set; }
-    public User User { get; set; }
+    public Member User { get; set; }
     public Book Book { get; set; }
 }

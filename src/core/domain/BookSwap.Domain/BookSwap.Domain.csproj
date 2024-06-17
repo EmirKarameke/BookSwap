@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\common\BookSwap.Common\BookSwap.Common.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\BookSwap.Auth\BookSwap.Auth.csproj" />
   </ItemGroup>
 
 </Project>

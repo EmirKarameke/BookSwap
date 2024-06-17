@@ -12,6 +12,6 @@ public class Swap : IEntity<Guid>
     public Guid Book1Id { get; set; }
     public Guid Book2Id { get; set; }
     public bool IsConfirmed { get; set; }
-    public User User { get; set; }
+    public Member User { get; set; }
     public Book Book { get; set; }
 }

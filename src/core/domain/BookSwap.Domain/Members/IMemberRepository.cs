@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSwap.Domain.Employees.EmployeeRoles
+namespace BookSwap.Domain.Users;
+
+public interface IMemberRepository : IRepositoryBase<Member,Guid>
 {
-    public interface IEmployeeRoleRepository : IRepositoryBase<EmployeeRole,int>
-    {
-    }
 }

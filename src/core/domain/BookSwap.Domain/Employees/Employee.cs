@@ -1,13 +1,12 @@
-﻿using BookSwap.Common.Entities;
+﻿using BookSwap.Auth.Users;
+using BookSwap.Common.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookSwap.Domain.Employees;
 
-public class Employee : IEntity<Guid>
+public class Employee : User 
 {
-    public string Email { get; set; }
-    public string Password { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Title { get; set; }
-    public Guid Id { get; set ; }
 }

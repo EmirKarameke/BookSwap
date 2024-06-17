@@ -29,7 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.EntityFrameworkCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Common", "src\common\BookSwap.Common\BookSwap.Common.csproj", "{999C50C9-8B64-4469-ADEA-19A67D90E54D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Auth", "src\infrastructure\BookSwap.Auth\BookSwap.Auth.csproj", "{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Auth", "src\infrastructure\BookSwap.Auth\BookSwap.Auth.csproj", "{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Api", "src\service\BookSwap.Api\BookSwap.Api.csproj", "{BF2AF31E-95AA-41E6-A53F-D2AF67245496}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Application", "src\core\application\BookSwap.Application\BookSwap.Application.csproj", "{104187D5-9E4A-442F-8DAD-541844407283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Application.Contract", "src\core\application\BookSwap.Application.Contract\BookSwap.Application.Contract.csproj", "{00E32AE9-9085-4738-8AB8-54FC52948FDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,18 @@ Global
 		{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2AF31E-95AA-41E6-A53F-D2AF67245496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2AF31E-95AA-41E6-A53F-D2AF67245496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2AF31E-95AA-41E6-A53F-D2AF67245496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2AF31E-95AA-41E6-A53F-D2AF67245496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104187D5-9E4A-442F-8DAD-541844407283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104187D5-9E4A-442F-8DAD-541844407283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104187D5-9E4A-442F-8DAD-541844407283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104187D5-9E4A-442F-8DAD-541844407283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +87,9 @@ Global
 		{165D4756-AE20-421B-A20B-B40DD7BD65E9} = {4A6A0311-E62C-4945-851B-1AE585DD6CAE}
 		{999C50C9-8B64-4469-ADEA-19A67D90E54D} = {05897425-83CC-49AC-8702-39AC9B3DC0BA}
 		{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE} = {80143BF5-8DBD-4C00-9B5C-357C36B3D098}
+		{BF2AF31E-95AA-41E6-A53F-D2AF67245496} = {23361BE0-2076-451B-8580-50DB70ED1A68}
+		{104187D5-9E4A-442F-8DAD-541844407283} = {91069374-1014-47D5-A478-B695AAA470A6}
+		{00E32AE9-9085-4738-8AB8-54FC52948FDD} = {91069374-1014-47D5-A478-B695AAA470A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A945CBE7-75D3-4D80-BF28-37F46F1C4B15}
