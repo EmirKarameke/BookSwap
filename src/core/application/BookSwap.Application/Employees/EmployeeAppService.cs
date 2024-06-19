@@ -1,6 +1,7 @@
 ﻿using BookSwap.Application.Contract.Employees;
 using BookSwap.Application.Contract.Employees.Dtos;
 using BookSwap.Application.Contract.ServiceTypes;
+using BookSwap.Auth;
 using BookSwap.Domain.Employees;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace BookSwap.Application.Employees
     public class EmployeeAppService : IEmployeeAppService
     {
         IEmployeeRepository employeeRepository;
+        
 
         public EmployeeAppService(IEmployeeRepository employeeRepository)
         {
@@ -24,19 +26,23 @@ namespace BookSwap.Application.Employees
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse<string>> Login(EmployeeLoginRequest request)
+        public async Task<string> Login(string emailOrUserName, string password)
         {
-            throw new NotImplementedException();
+            var user = await employeeRepository.SingleOrDefaultAsync(i => i.EmailOrUserName == emailOrUserName);
+            if (user == null) throw new Exception("Kullanıcı Adı Şifre Hatası");
+
+            //var passwordResult = VerifyPassword(password, user.PasswordSalt, user.PasswordHash);
+            //if(!passwordResult) throw new Exception("Kullanıcı Adı Şifre Hatası");
+
+            return "";
+
         }
 
-        public Task<ServiceResponse<string>> Logout()
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<ServiceResponse<EmployeeDto>> Update(EmployeeDto employee)
         {
             throw new NotImplementedException();
         }
+
     }
 }

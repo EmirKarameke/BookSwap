@@ -24,7 +24,7 @@ namespace BookSwap.EntityFrameworkCore
 
         public async Task<TEntity> AddAsync(TEntity entity, bool autoSave = true)
         {
-            context.Set<TEntity>().Add(entity);
+            context.Add(entity);
 
             if (autoSave) { context.SaveChanges(); }
 
@@ -33,7 +33,7 @@ namespace BookSwap.EntityFrameworkCore
 
         public async Task AddManyAsync(IEnumerable<TEntity> entities, bool autoSave = true)
         {
-            context.Set<TEntity>().AddRange(entities);
+            //context.Set<TEntity>().AddRange(entities);
             if (autoSave) { context.SaveChanges(); };
         }
 
@@ -95,6 +95,7 @@ namespace BookSwap.EntityFrameworkCore
 
         public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
         {
+            
             var query = context.Set<TEntity>().Where(predicate).AsQueryable();
             if (includeProperties != null)
             {

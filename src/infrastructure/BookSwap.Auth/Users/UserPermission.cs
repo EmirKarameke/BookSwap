@@ -1,14 +1,18 @@
 ﻿using BookSwap.Auth.Permissions;
+using BookSwap.Common.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookSwap.Auth.Users
 {
-    public class UserPermission
+    [Table("UserPermissions")]
+    public class UserPermission<TKey>: IEntity<TKey>
+        where TKey : struct
     {
-        public int Id { get; set; }
-        public Permission Permission { get; set; }
+        public TKey Id { get; set; }
+        public Permission<TKey> Permission { get; set; }
         public int PermissionId { get; set; }
 
-        public User User { get; set; }
-        public Guid UserId { get; set; }
+        public IUser<TKey> User { get; set; }
+        public TKey UserId { get; set; }
     }
 }

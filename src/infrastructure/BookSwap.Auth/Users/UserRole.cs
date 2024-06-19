@@ -1,15 +1,19 @@
 ﻿using BookSwap.Auth.Roles;
+using BookSwap.Common.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace BookSwap.Auth.Users
 {
-    public class UserRole
+    [Table("UserRoles")]
+    public class UserRole<TKey>: IEntity<TKey>
+        where TKey : struct
     {
-        public int Id { get; set; }
-        public Role Role { get; set; }
+        public TKey Id { get; set; }
+        public Role<TKey> Role { get; set; }
         public int RoleId { get; set; }
 
-        public User User { get; set; }
-        public Guid UserId { get; set; }
+        public IUser<TKey> User { get; set; }
+        public TKey UserId { get; set; }
     }
 }
