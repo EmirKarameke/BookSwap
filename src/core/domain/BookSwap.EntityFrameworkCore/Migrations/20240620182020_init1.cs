@@ -19,7 +19,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                     FirstName = table.Column<string>(type: "NVarChar(72)", maxLength: 72, nullable: false),
                     LastName = table.Column<string>(type: "NVarChar(72)", maxLength: 72, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmailOrUserName = table.Column<string>(type: "NVarChar", nullable: false),
+                    EmailOrUserName = table.Column<string>(type: "NVarChar(72)", maxLength: 72, nullable: false),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
@@ -63,8 +63,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PermissionId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PermissionId = table.Column<int>(type: "int", nullable: false),
+                    PermissionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "UniqueIdentifier", nullable: false)
                 },
                 constraints: table =>
@@ -77,8 +76,8 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserPermissions_Permissions_PermissionId1",
-                        column: x => x.PermissionId1,
+                        name: "FK_UserPermissions_Permissions_PermissionId",
+                        column: x => x.PermissionId,
                         principalTable: "Permissions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -89,23 +88,21 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoleId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    PermissionId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PermissionId = table.Column<int>(type: "int", nullable: false)
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PermissionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RolePermissions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RolePermissions_Permissions_PermissionId1",
-                        column: x => x.PermissionId1,
+                        name: "FK_RolePermissions_Permissions_PermissionId",
+                        column: x => x.PermissionId,
                         principalTable: "Permissions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RolePermissions_Roles_RoleId1",
-                        column: x => x.RoleId1,
+                        name: "FK_RolePermissions_Roles_RoleId",
+                        column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -116,8 +113,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoleId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "UniqueIdentifier", nullable: false)
                 },
                 constraints: table =>
@@ -130,27 +126,27 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserRoles_Roles_RoleId1",
-                        column: x => x.RoleId1,
+                        name: "FK_UserRoles_Roles_RoleId",
+                        column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermissions_PermissionId1",
+                name: "IX_RolePermissions_PermissionId",
                 table: "RolePermissions",
-                column: "PermissionId1");
+                column: "PermissionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermissions_RoleId1",
+                name: "IX_RolePermissions_RoleId",
                 table: "RolePermissions",
-                column: "RoleId1");
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserPermissions_PermissionId1",
+                name: "IX_UserPermissions_PermissionId",
                 table: "UserPermissions",
-                column: "PermissionId1");
+                column: "PermissionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserPermissions_UserId",
@@ -158,9 +154,9 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoles_RoleId1",
+                name: "IX_UserRoles_RoleId",
                 table: "UserRoles",
-                column: "RoleId1");
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_UserId",

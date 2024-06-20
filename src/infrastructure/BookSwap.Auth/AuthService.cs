@@ -46,9 +46,9 @@ namespace BookSwap.Auth
 
             var userRoles = await userRoleRepository.FindAsync(i => i.UserId.Equals(user.Id));
             var userRoleIds = userRoles.Select(i => i.RoleId).ToList();
-            var rolePermissions = await rolePermissionRepository.FindAsync(i => userRoleIds.Contains(i.RoleId));
+            var rolePermissions = await rolePermissionRepository.FindAsync(i => userRoleIds.Contains(i.RoleId), i => i.Permission);
 
-            var userPermissions = await userPermissionRepository.FindAsync(i => i.UserId.Equals(user.Id));
+            var userPermissions = await userPermissionRepository.FindAsync(i => i.UserId.Equals(user.Id),i=>i.Permission);
 
             var allPermissions = new List<Permission<TKey>>();
             allPermissions.AddRange(userPermissions.Select(i => i.Permission));

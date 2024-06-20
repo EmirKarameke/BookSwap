@@ -16,9 +16,9 @@ namespace BookSwap.Auth.Roles.RolePermissions
         public Tkey Id { get; set; }
 
         public Role<Tkey> Role { get; set; }
-        public int RoleId { get; set; }
+        public Tkey RoleId { get; set; }
 
         public Permission<Tkey> Permission { get; set; }
-        public int PermissionId { get; set; }
+        public Tkey PermissionId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookSwap.Auth;
+using BookSwap.Domain;
 using BookSwap.Domain.Employees;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,9 @@ namespace BookSwap.Api.Controllers
             this.authService = authService;
         }
 
+        //[Authorize(BookSwapPermissions.Employee.Create)]
+        [Authorize(Roles = $"{BookSwapPermissions.Employee.Create}")]
+        [Authorize(Policy = "EmployeeOrMember")]
         [HttpGet]
         public async Task<string> Register(string userName, string password)
         {

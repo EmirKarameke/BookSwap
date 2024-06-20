@@ -80,23 +80,17 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PermissionId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("PermissionId1")
+                    b.Property<Guid>("PermissionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("RoleId1")
+                    b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PermissionId1");
+                    b.HasIndex("PermissionId");
 
-                    b.HasIndex("RoleId1");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("RolePermissions");
                 });
@@ -107,10 +101,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PermissionId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("PermissionId1")
+                    b.Property<Guid>("PermissionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
@@ -118,7 +109,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PermissionId1");
+                    b.HasIndex("PermissionId");
 
                     b.HasIndex("UserId");
 
@@ -131,10 +122,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("RoleId1")
+                    b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
@@ -142,7 +130,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId1");
+                    b.HasIndex("RoleId");
 
                     b.HasIndex("UserId");
 
@@ -191,13 +179,13 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 {
                     b.HasOne("BookSwap.Auth.Permissions.Permission<System.Guid>", "Permission")
                         .WithMany()
-                        .HasForeignKey("PermissionId1")
+                        .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookSwap.Auth.Roles.Role<System.Guid>", "Role")
                         .WithMany("RolePermissions")
-                        .HasForeignKey("RoleId1")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -210,7 +198,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 {
                     b.HasOne("BookSwap.Auth.Permissions.Permission<System.Guid>", "Permission")
                         .WithMany()
-                        .HasForeignKey("PermissionId1")
+                        .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -229,7 +217,7 @@ namespace BookSwap.EntityFrameworkCore.Migrations
                 {
                     b.HasOne("BookSwap.Auth.Roles.Role<System.Guid>", "Role")
                         .WithMany()
-                        .HasForeignKey("RoleId1")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

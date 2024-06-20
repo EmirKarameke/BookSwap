@@ -31,11 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Common", "src\comm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Auth", "src\infrastructure\BookSwap.Auth\BookSwap.Auth.csproj", "{9DD47E35-E7C5-48FC-99AD-F232AA4B90DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Api", "src\service\BookSwap.Api\BookSwap.Api.csproj", "{BF2AF31E-95AA-41E6-A53F-D2AF67245496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Api", "src\service\BookSwap.Api\BookSwap.Api.csproj", "{BF2AF31E-95AA-41E6-A53F-D2AF67245496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Application", "src\core\application\BookSwap.Application\BookSwap.Application.csproj", "{104187D5-9E4A-442F-8DAD-541844407283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Application", "src\core\application\BookSwap.Application\BookSwap.Application.csproj", "{104187D5-9E4A-442F-8DAD-541844407283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSwap.Application.Contract", "src\core\application\BookSwap.Application.Contract\BookSwap.Application.Contract.csproj", "{00E32AE9-9085-4738-8AB8-54FC52948FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Application.Contract", "src\core\application\BookSwap.Application.Contract\BookSwap.Application.Contract.csproj", "{00E32AE9-9085-4738-8AB8-54FC52948FDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

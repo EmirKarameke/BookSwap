@@ -11,7 +11,7 @@ namespace BookSwap.Auth.Users
     {
         public TKey Id { get; set; }
         public Role<TKey> Role { get; set; }
-        public int RoleId { get; set; }
+        public TKey RoleId { get; set; }
 
         public IUser<TKey> User { get; set; }
         public TKey UserId { get; set; }

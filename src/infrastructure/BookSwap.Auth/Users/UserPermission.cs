@@ -10,7 +10,7 @@ namespace BookSwap.Auth.Users
     {
         public TKey Id { get; set; }
         public Permission<TKey> Permission { get; set; }
-        public int PermissionId { get; set; }
+        public TKey PermissionId { get; set; }
 
         public IUser<TKey> User { get; set; }
         public TKey UserId { get; set; }
