@@ -26,10 +26,19 @@ namespace BookSwap.Blazor.Web.Services
 
         public async Task<string> PostAsync(ServiceRequestBase request)
         {
-            var response = await client.PostAsync(request.Url,request.Object);
-            var responseContent = await response.Content.ReadAsStringAsync();
-            //var result = JsonSerializer.Deserialize<string>(responseContent);
-            return responseContent;
+            try
+            {
+                var response = await client.PostAsync(request.Url, request.Object);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                //var result = JsonSerializer.Deserialize<string>(responseContent);
+                return responseContent;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
         }
     }
 }

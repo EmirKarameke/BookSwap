@@ -1,5 +1,9 @@
-﻿@inherits LayoutComponentBase
-
+﻿@using Blazored.LocalStorage
+@using BookSwap.Blazor.Web.Providers
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@inherits LayoutComponentBase
+@inject AuthenticationStateProvider authState;
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -7,7 +11,27 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            @if (_isTokenExist)
+            {
+                <Dropdown>
+                    <DropdownToggle>
+                        <Icon Name="IconName.User" />
+                        @userName
+                    </DropdownToggle>
+                    <DropdownMenu>
+                        <DropdownItem>Profile</DropdownItem>
+                        <DropdownDivider />
+                        <DropdownItem @onclick="Logout">Logout</DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
+            }
+            else
+            {
+                <NavLink href="login">
+                    <Icon Name="IconName.UserPlus" /> Login
+                </NavLink>
+              
+            }
         </div>
 
         <article class="content px-4">
@@ -15,3 +39,23 @@
         </article>
     </main>
 </div>
+@code {
+    private bool _isTokenExist;
+    private string userName;
+    protected override async Task OnInitializedAsync()
+    {
+        _isTokenExist = await ((AuthStateProvider)authState).IsAuthentication();
+        if (_isTokenExist)
+        {
+            var user = await ((AuthStateProvider)authState).GetAuthenticationStateAsync();
+            userName = user.User.Identities.First(i => i.NameClaimType == ClaimTypes.Name).Name;
+        }
+    }
+    public void Logout()
+    {
+        if (_isTokenExist)
+        {
+            ((AuthStateProvider)authState).Logout();
+        }
+    }
+}

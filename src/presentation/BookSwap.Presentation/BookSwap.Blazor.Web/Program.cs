@@ -3,7 +3,9 @@ using Blazorise;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
 using BookSwap.Blazor.Web;
+using BookSwap.Blazor.Web.Providers;
 using BookSwap.Blazor.Web.Services;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -22,6 +24,9 @@ builder.Services
     .AddBootstrap5Providers()
     .AddFontAwesomeIcons();
 
+builder.Services.AddAuthorizationCore();
+
+builder.Services.AddScoped<AuthenticationStateProvider,AuthStateProvider>();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<IHttpService,HttpService>();
 

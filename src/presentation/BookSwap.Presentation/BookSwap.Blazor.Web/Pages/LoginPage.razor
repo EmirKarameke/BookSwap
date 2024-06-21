@@ -1,7 +1,7 @@
 ﻿@layout EmptyLayout
 @page "/Login"
 @* w50 p3 <3 *@
-<form class="shadow p-3 mb-5 bg-body-tertiary rounded w-50 p-3">
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded w-50 p-3">
     <div class="mb-3 w-100">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" @bind="user.UserNameOrEmail">
@@ -16,5 +16,5 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn btn-primary" @onclick="Login">Submit</button>
-</form>  
+</div>  
 
