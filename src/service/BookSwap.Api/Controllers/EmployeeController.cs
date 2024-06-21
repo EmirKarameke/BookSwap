@@ -4,52 +4,56 @@ using BookSwap.Domain.Employees;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSwap.Api.Controllers
+namespace BookSwap.Api.Controllers;
+
+[ApiController]
+[Route("[controller]/[action]/")]
+public class EmployeeController : Controller
 {
-    [ApiController]
-    [Route("[controller]/[action]/{id?}")]
-    public class EmployeeController : Controller
+    IAuthService<Guid> authService;
+
+    public EmployeeController(IAuthService<Guid> authService)
     {
-        IAuthService<Guid> authService;
+        this.authService = authService;
+    }
 
-        public EmployeeController(IAuthService<Guid> authService)
+    //[Authorize(BookSwapPermissions.Employee.Create)]
+    [Authorize(Roles = $"{BookSwapPermissions.Employee.Create}")]
+    [Authorize(Policy = "EmployeeOrMember")]
+    [HttpGet]
+    public async Task<string> Register(string userName, string password)
+    {
+        var employee = new Employee()
         {
-            this.authService = authService;
-        }
+            EmailOrUserName = userName,
+            FirstName = "First Name",
+            LastName = "Last Name",
+            Title = "Title"
+        };
 
-        //[Authorize(BookSwapPermissions.Employee.Create)]
-        [Authorize(Roles = $"{BookSwapPermissions.Employee.Create}")]
-        [Authorize(Policy = "EmployeeOrMember")]
-        [HttpGet]
-        public async Task<string> Register(string userName, string password)
-        {
-            var employee = new Employee()
-            {
-                EmailOrUserName = userName,
-                FirstName = "First Name",
-                LastName = "Last Name",
-                Title = "Title"
-            };
+        var result = await authService.Register(employee, password);
 
-            var result = await authService.Register(employee, password);
+        return result ? "BAŞARILI" : "HATA OLUŞTU";
+    }
 
-            return result ? "BAŞARILI" : "HATA OLUŞTU";
-        }
+    [HttpPost]
 
-        [HttpGet]
+    public async Task<string> Login(User user)
+    {
+        var result = await authService.Login(user.UserNameOrEmail, user.Password);
 
-        public async Task<string> Login(string userName, string password)
-        {
-            var result = await authService.Login(userName, password);
+        return result;
+    }
 
-            return result;
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<string> TestAuth()
-        {
-            return "Başarılı";
-        }
+    [Authorize]
+    [HttpGet]
+    public async Task<string> TestAuth()
+    {
+        return "Başarılı";
+    }
+    public class User
+    {
+        public string UserNameOrEmail { get; set; }
+        public string Password { get; set; }
     }
 }

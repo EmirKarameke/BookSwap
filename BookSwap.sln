@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Application", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Application.Contract", "src\core\application\BookSwap.Application.Contract\BookSwap.Application.Contract.csproj", "{00E32AE9-9085-4738-8AB8-54FC52948FDD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSwap.Blazor.Web", "src\presentation\BookSwap.Presentation\BookSwap.Blazor.Web\BookSwap.Blazor.Web.csproj", "{5C79878C-41F0-42EA-B17D-020C978EF5A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00E32AE9-9085-4738-8AB8-54FC52948FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C79878C-41F0-42EA-B17D-020C978EF5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C79878C-41F0-42EA-B17D-020C978EF5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C79878C-41F0-42EA-B17D-020C978EF5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C79878C-41F0-42EA-B17D-020C978EF5A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{BF2AF31E-95AA-41E6-A53F-D2AF67245496} = {23361BE0-2076-451B-8580-50DB70ED1A68}
 		{104187D5-9E4A-442F-8DAD-541844407283} = {91069374-1014-47D5-A478-B695AAA470A6}
 		{00E32AE9-9085-4738-8AB8-54FC52948FDD} = {91069374-1014-47D5-A478-B695AAA470A6}
+		{5C79878C-41F0-42EA-B17D-020C978EF5A0} = {F6E995AA-59B4-4499-AEAF-45DC5D6DB301}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A945CBE7-75D3-4D80-BF28-37F46F1C4B15}

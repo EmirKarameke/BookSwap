@@ -118,6 +118,17 @@ builder.Services.AddAuthorization((options) =>
 
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5206") // Ýzin verilen kaynak
+                   .AllowAnyMethod() // Tüm HTTP metodlarýna izin ver
+                   .AllowAnyHeader(); // Tüm baþlýklara izin ver
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -126,8 +137,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
+app.UseCors("MyCorsPolicy");
+//app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
