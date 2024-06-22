@@ -44,48 +44,58 @@
         <ModalBody>
             <Field>
                 <FieldLabel>ISBNNo</FieldLabel>
-                <TextEdit Placeholder="ISBNNo giriniz..." />
+                <TextEdit Placeholder="ISBNNo giriniz..." @bind-Text="BookDto.ISBNNo" />
             </Field>
             <Field>
                 <FieldLabel>Kitap Adı</FieldLabel>
-                <TextEdit Placeholder="Kitap Adını giriniz..." />
+                <TextEdit Placeholder="Kitap Adını giriniz..." @bind-Text="BookDto.BookName" />
             </Field>
             <Field>
                 <FieldLabel>Yazar</FieldLabel>
-                <TextEdit Placeholder="Yazarı giriniz..." />
+                <TextEdit Placeholder="Yazarı giriniz..." @bind-Text="BookDto.Writer" />
             </Field>
             <Field>
                 <FieldLabel>Sayfa Sayısı</FieldLabel>
-                <TextEdit Placeholder="Sayfa Sayısı giriniz..." />
+                <NumericEdit @bind-Value="BookDto.NumberOfPages" />
             </Field>
             <Field>
                 <FieldLabel>Kopya Adedi</FieldLabel>
-                <TextEdit Placeholder="Kopya Adedi giriniz..." />
+                <NumericEdit @bind-Value="BookDto.NumberOfCopies" />
             </Field>
             <Field>
                 <FieldLabel>Fiyatı</FieldLabel>
-                <TextEdit Placeholder="Fiyatı giriniz..." />
+                <NumericEdit @bind-Value="BookDto.UnitPrice" />
             </Field>
             <Field>
                 <FieldLabel>Kategori</FieldLabel>
-                <TextEdit Placeholder="Kategori giriniz..." />
+                <TextEdit Placeholder="Kategori giriniz..." @bind-Text="BookDto.Category" />
             </Field>
             <Field>
                 <FieldLabel>Özeti</FieldLabel>
-                <TextEdit Placeholder="Özeti giriniz..." />
+                <TextEdit Placeholder="Özeti giriniz..." @bind-Text="BookDto.Summary" />
             </Field>
             <Field>
                 <FieldLabel>Resim Urli</FieldLabel>
-                <TextEdit Placeholder="Resim Urli giriniz..." />
+                <TextEdit Placeholder="Resim Urli giriniz..." @bind-Text="BookDto.imageUrl" />
             </Field>
         </ModalBody>
         <ModalFooter>
             <Button Color="Color.Danger" Clicked="@HideModal">Kapat</Button>
-            <Button Color="Color.Success" Clicked="@HideModal">Kitap Ekle</Button>
+            <Button Color="Color.Success" Clicked="@AddBook">Kitap Ekle</Button>
         </ModalFooter>
     </ModalContent>
 </Modal>
-
+<Toaster>
+    <Toast @bind-Visible="@toastVisible">
+        <ToastHeader>
+            <Strong Margin="Margin.IsAuto.FromEnd">Başarılı</Strong>
+            <CloseButton />
+        </ToastHeader>
+        <ToastBody>
+            Kitap Başarılı Bii Şekilde Eklendi..
+        </ToastBody>
+    </Toast>
+</Toaster>
 
 @code {
     private Modal modalRef;

@@ -19,7 +19,7 @@ public class BookSwapContext : DbContext
         
     }
 
-    //public DbSet<Book> Books { get; set; }
+    public DbSet<Book> Books { get; set; }
     public DbSet<Employee> Employees { get; set; }
     //public DbSet<Order> Orders { get; set; }
     //public DbSet<Reservation> Reservations { get; set; }

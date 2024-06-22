@@ -1,11 +1,15 @@
 using AutoMapper;
 using BookSwap.Api.Filters;
+using BookSwap.Application.Books;
+using BookSwap.Application.Contract.Books;
 using BookSwap.Auth;
 using BookSwap.Auth.Permissions;
 using BookSwap.Auth.Roles;
 using BookSwap.Auth.Roles.RolePermissions;
 using BookSwap.Auth.Users;
+using BookSwap.Domain.Books;
 using BookSwap.EntityFrameworkCore;
+using BookSwap.EntityFrameworkCore.Books;
 using BookSwap.EntityFrameworkCore.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -70,6 +74,8 @@ builder.Services.AddDbContext<BookSwapContext>(options =>
 });
 
 builder.Services.AddScoped<IUserRepository<Guid>, UserRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookAppService, BookAppService>();
 builder.Services.AddScoped<IUserRoleRepository<Guid>, UserRoleRepository>();
 builder.Services.AddScoped<IUserPermissionRepository<Guid>, UserPermissionRepository>();
 builder.Services.AddScoped<IPermissionRepository<Guid>, PermissionRepository>();
@@ -125,6 +131,10 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.WithOrigins("http://localhost:5206") // Ýzin verilen kaynak
+                   .AllowAnyMethod() // Tüm HTTP metodlarýna izin ver
+                   .AllowAnyHeader(); // Tüm baþlýklara izin ver
+                                      
+            builder.WithOrigins("https://localhost:44346") // Ýzin verilen kaynak
                    .AllowAnyMethod() // Tüm HTTP metodlarýna izin ver
                    .AllowAnyHeader(); // Tüm baþlýklara izin ver
         });

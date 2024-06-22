@@ -28,9 +28,9 @@ public partial class LoginPage
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         serviceRequestBase.Object = content;
         var req = serviceRequestBase;
-        var response = await httpService.PostAsync(req);
-        await localStorageService.SetItemAsStringAsync("token", response);
-        ((AuthStateProvider)authStateProvider).NotifyUserLogin(response);
+        var response = await httpService.PostAsync<string>(req);
+        await localStorageService.SetItemAsStringAsync("token", response.Data);
+        ((AuthStateProvider)authStateProvider).NotifyUserLogin(response.Data);
         navigationManager.NavigateTo("/");
 
     }

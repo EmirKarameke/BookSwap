@@ -1,11 +1,13 @@
-﻿using System.Text.Json;
+﻿using BookSwap.Application.Contract.ServiceTypes;
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace BookSwap.Blazor.Web.Services
 {
     public interface IHttpService
     {
         Task<object>GetObjectAsync(ServiceRequestBase request);
-        Task<string> PostAsync(ServiceRequestBase request);
+        Task<ServiceResponse<T>> PostAsync<T>(ServiceRequestBase request);
     }
 
     public class HttpService : IHttpService
@@ -24,14 +26,15 @@ namespace BookSwap.Blazor.Web.Services
             throw new NotImplementedException();
         }
 
-        public async Task<string> PostAsync(ServiceRequestBase request)
+        public async Task<ServiceResponse<T>> PostAsync<T>(ServiceRequestBase request)
         {
             try
             {
                 var response = await client.PostAsync(request.Url, request.Object);
                 var responseContent = await response.Content.ReadAsStringAsync();
-                //var result = JsonSerializer.Deserialize<string>(responseContent);
-                return responseContent;
+                
+                var result = JsonConvert.DeserializeObject<ServiceResponse<T>>(responseContent);
+                return result;
             }
             catch (Exception e)
             {

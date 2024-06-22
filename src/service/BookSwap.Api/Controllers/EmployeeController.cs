@@ -1,4 +1,5 @@
-﻿using BookSwap.Auth;
+﻿using BookSwap.Application.Contract.ServiceTypes;
+using BookSwap.Auth;
 using BookSwap.Domain;
 using BookSwap.Domain.Employees;
 using Microsoft.AspNetCore.Authorization;
@@ -37,12 +38,15 @@ public class EmployeeController : Controller
     }
 
     [HttpPost]
-
-    public async Task<string> Login(User user)
+    public async Task<ServiceResponse<string>> Login(User user)
     {
+        var response = new ServiceResponse<string>();
         var result = await authService.Login(user.UserNameOrEmail, user.Password);
-
-        return result;
+        if (!string.IsNullOrEmpty(result))
+        {
+            response.Data = result;
+        }
+        return response;
     }
 
     [Authorize]
