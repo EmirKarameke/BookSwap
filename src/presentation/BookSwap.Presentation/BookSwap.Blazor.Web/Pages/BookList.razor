@@ -1,0 +1,103 @@
+﻿@page "/book-list"
+
+<Card>
+    <CardHeader>
+        Kitap Listesi
+        <Button Class="btn btn-primary float-end" Clicked="@ShowModal"><Icon Name="IconName.PlusCircle" /> Yeni Kitap Ekle</Button>
+    </CardHeader>
+    <CardBody>
+        <Table Hoverable>
+            <TableHeader>
+                <TableRow>
+                    <TableHeaderCell>ISBNNo</TableHeaderCell>
+                    <TableHeaderCell>Kitap Adı</TableHeaderCell>
+                    <TableHeaderCell>Yazar</TableHeaderCell>
+                    <TableHeaderCell>Sayfa Sayısı</TableHeaderCell>
+                    <TableHeaderCell>Kopya Adedi</TableHeaderCell>
+                    <TableHeaderCell>Fiyatı</TableHeaderCell>
+                    <TableHeaderCell>Kategori</TableHeaderCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                <TableRow>
+                    <TableRowHeader>1</TableRowHeader>
+                    <TableRowCell>Mark</TableRowCell>
+                    <TableRowCell>Otto</TableRowCell>
+                    <TableRowCell>Otto</TableRowCell>
+                    <TableRowCell>Otto</TableRowCell>
+                    <TableRowCell>Otto</TableRowCell>
+                    <TableRowCell>@@mdo</TableRowCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+    </CardBody>
+    <CardFooter>CardFooter</CardFooter>
+</Card>
+
+
+<Modal @ref="modalRef">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Kitap Ekleme</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>ISBNNo</FieldLabel>
+                <TextEdit Placeholder="ISBNNo giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Kitap Adı</FieldLabel>
+                <TextEdit Placeholder="Kitap Adını giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Yazar</FieldLabel>
+                <TextEdit Placeholder="Yazarı giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Sayfa Sayısı</FieldLabel>
+                <TextEdit Placeholder="Sayfa Sayısı giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Kopya Adedi</FieldLabel>
+                <TextEdit Placeholder="Kopya Adedi giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Fiyatı</FieldLabel>
+                <TextEdit Placeholder="Fiyatı giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Kategori</FieldLabel>
+                <TextEdit Placeholder="Kategori giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Özeti</FieldLabel>
+                <TextEdit Placeholder="Özeti giriniz..." />
+            </Field>
+            <Field>
+                <FieldLabel>Resim Urli</FieldLabel>
+                <TextEdit Placeholder="Resim Urli giriniz..." />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Danger" Clicked="@HideModal">Kapat</Button>
+            <Button Color="Color.Success" Clicked="@HideModal">Kitap Ekle</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+@code {
+    private Modal modalRef;
+
+    private Task ShowModal()
+    {
+        return modalRef.Show();
+    }
+
+    private Task HideModal()
+    {
+        return modalRef.Hide();
+    }
+
+}

@@ -1,17 +1,16 @@
+using AutoMapper;
 using BookSwap.Api.Filters;
 using BookSwap.Auth;
 using BookSwap.Auth.Permissions;
 using BookSwap.Auth.Roles;
 using BookSwap.Auth.Roles.RolePermissions;
 using BookSwap.Auth.Users;
-using BookSwap.Domain;
 using BookSwap.EntityFrameworkCore;
 using BookSwap.EntityFrameworkCore.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,6 +54,8 @@ builder.Services.AddSwaggerGen(c =>
     c.OperationFilter<AuthorizeCheckOperationFilter>();
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 IConfiguration configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -72,8 +73,8 @@ builder.Services.AddScoped<IUserRepository<Guid>, UserRepository>();
 builder.Services.AddScoped<IUserRoleRepository<Guid>, UserRoleRepository>();
 builder.Services.AddScoped<IUserPermissionRepository<Guid>, UserPermissionRepository>();
 builder.Services.AddScoped<IPermissionRepository<Guid>, PermissionRepository>();
-builder.Services.AddScoped<IRoleRepository<Guid>,RoleRepository>();
-builder.Services.AddScoped<IRolePermissionRepository<Guid>,RolePermissionRepository>();
+builder.Services.AddScoped<IRoleRepository<Guid>, RoleRepository>();
+builder.Services.AddScoped<IRolePermissionRepository<Guid>, RolePermissionRepository>();
 
 
 builder.Services.AddScoped<IAuthService<Guid>, AuthService<Guid>>();
@@ -98,7 +99,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization((options) => 
+builder.Services.AddAuthorization((options) =>
 {
     // iki rolden birine sahip olunmalý 
     //options.AddPolicy("AdminOrEditor", policy 
@@ -114,7 +115,7 @@ builder.Services.AddAuthorization((options) =>
     //        // Burada, politikanýn gereksinimlerini belirleyebilirsiniz.
     //        // Örneðin, belirli bir claim'e sahip olma gereksinimi gibi.
     //    });
-   
+
 
 });
 
