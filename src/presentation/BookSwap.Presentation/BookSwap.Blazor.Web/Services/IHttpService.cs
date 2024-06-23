@@ -6,7 +6,7 @@ namespace BookSwap.Blazor.Web.Services
 {
     public interface IHttpService
     {
-        Task<object>GetObjectAsync(ServiceRequestBase request);
+        Task<ServiceResponse<T>> GetListAsync<T>(ServiceRequestBase request);
         Task<ServiceResponse<T>> PostAsync<T>(ServiceRequestBase request);
     }
 
@@ -19,11 +19,20 @@ namespace BookSwap.Blazor.Web.Services
             this.client = client;
         }
 
-        public Task<object> GetObjectAsync(ServiceRequestBase request)
+        public async Task<ServiceResponse<T>> GetListAsync<T>(ServiceRequestBase request)
         {
-            client.GetAsync(request.Url);
+            try
+            {
+                var response = await client.GetAsync(request.Url);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ServiceResponse<T>>(responseContent);
+                return result;
+            }
+            catch (Exception ex) 
+            {
+                throw;
+            }
 
-            throw new NotImplementedException();
         }
 
         public async Task<ServiceResponse<T>> PostAsync<T>(ServiceRequestBase request)

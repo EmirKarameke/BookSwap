@@ -1,4 +1,5 @@
-﻿using BookSwap.Application.Contract.Books.Dtos;
+﻿using AutoMapper;
+using BookSwap.Application.Contract.Books.Dtos;
 using BookSwap.Blazor.Web.Services;
 using Microsoft.AspNetCore.Components;
 using System.Text;
@@ -10,10 +11,13 @@ namespace BookSwap.Blazor.Web.Pages
     {
         [Inject] HttpService httpService { get; set; }
         public AddBookDto BookDto { get; set; }
+        public List<GetBookDto> ListBook { get; set; }
         bool toastVisible = false;
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             BookDto = new AddBookDto();
+            ListBook = new List<GetBookDto>();
+            await GetBookList();
         }
         public async Task AddBook()
         {
@@ -25,8 +29,21 @@ namespace BookSwap.Blazor.Web.Pages
             var result = await httpService.PostAsync<bool>(serviceRequestBase);
             if (result.Success)
             {
+                await GetBookList();
                 toastVisible = true;
             }
+        }
+        public async Task GetBookList()
+        {
+            ServiceRequestBase serviceRequestBase = new ServiceRequestBase();
+            serviceRequestBase.Url = serviceRequestBase.Url + "Book/GetBookList";
+            var result = await httpService.GetListAsync<List<GetBookDto>>(serviceRequestBase);
+            if (result.Success)
+            {
+                //var books = mapper.Map<List<AddBookDto>>(result.Data);
+                ListBook = result.Data;
+            }
+
         }
     }
 }

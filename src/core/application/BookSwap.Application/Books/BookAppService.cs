@@ -38,5 +38,23 @@ namespace BookSwap.Application.Books
 
             return result;
         }
+
+        public async Task<ServiceResponse<List<Book>>> GetBookListAsync()
+        {
+            var result = new ServiceResponse<List<Book>>();
+            try
+            {
+            var bookList = await bookRepository.GetAllAsync();
+            var books = mapper.Map<List<Book>>(bookList);
+            result.Success = true;
+            result.Data = books;
+            }
+            catch (Exception ex) 
+            {
+                result.Success = false;
+                result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Blazored.LocalStorage;
 using Blazorise;
 using Blazorise.Bootstrap5;
@@ -16,6 +17,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped<ServiceRequestBase>();
 builder.Services.AddScoped<HttpService>();
 builder.Services.AddScoped<HttpClient>();
+
 builder.Services
     .AddBlazorise(options =>
     {
@@ -23,7 +25,6 @@ builder.Services
     })
     .AddBootstrap5Providers()
     .AddFontAwesomeIcons();
-
 builder.Services.AddAuthorizationCore();
 
 builder.Services.AddScoped<AuthenticationStateProvider,AuthStateProvider>();

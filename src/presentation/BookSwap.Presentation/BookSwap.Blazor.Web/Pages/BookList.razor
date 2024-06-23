@@ -18,17 +18,20 @@
                     <TableHeaderCell>Kategori</TableHeaderCell>
                 </TableRow>
             </TableHeader>
+            @foreach (var book in ListBook)
+            {  
             <TableBody>
                 <TableRow>
-                    <TableRowHeader>1</TableRowHeader>
-                    <TableRowCell>Mark</TableRowCell>
-                    <TableRowCell>Otto</TableRowCell>
-                    <TableRowCell>Otto</TableRowCell>
-                    <TableRowCell>Otto</TableRowCell>
-                    <TableRowCell>Otto</TableRowCell>
-                    <TableRowCell>@@mdo</TableRowCell>
+                    <TableRowHeader>@book.ISBNNo</TableRowHeader>
+                    <TableRowCell>@book.BookName</TableRowCell>
+                    <TableRowCell>@book.Writer</TableRowCell>
+                    <TableRowCell>@book.NumberOfPages</TableRowCell>
+                    <TableRowCell>@book.NumberOfCopies</TableRowCell>
+                    <TableRowCell>@book.UnitPrice</TableRowCell>
+                    <TableRowCell>@book.Category</TableRowCell>
                 </TableRow>
             </TableBody>
+            }
         </Table>
     </CardBody>
     <CardFooter>CardFooter</CardFooter>
